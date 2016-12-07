@@ -2,6 +2,8 @@
 ## General Idea ##
 This project is used to collect new application ideas and evaluate the potential of them.
 
+![](https://github.com/witchpou/innovationlab/blob/master/docs/images/preview.png?raw=true
+
 #Installation
 ## Prerequisites ##
 * Java 8 SE Development Kit (binaries on PATH, JAVA_HOME set)
@@ -11,8 +13,8 @@ This project is used to collect new application ideas and evaluate the potential
 
 ## Quick Introduction ##
 
-* git clone whole repo
-* go to innovationlab
+* git clone https://github.com/witchpou/innovationLab.git
+* go to innovationlab directory
 * run ```ant setup_project```
 * browse to http://localhost:8080/innovationlab
 
