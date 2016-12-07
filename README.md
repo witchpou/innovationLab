@@ -2,7 +2,7 @@
 ## General Idea ##
 This project is used to collect new application ideas and evaluate the potential of them.
 
-![](https://github.com/witchpou/innovationlab/blob/master/docs/images/preview.png?raw=true
+![](https://github.com/witchpou/innovationlab/blob/master/docs/images/preview.png?raw=true)
 
 #Installation
 ## Prerequisites ##
