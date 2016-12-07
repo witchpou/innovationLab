@@ -17,6 +17,7 @@ This project is used to collect new application ideas and evaluate the potential
 * go to innovationlab directory
 * run ```ant setup_project```
 * browse to http://localhost:8080/innovationlab
+* if you just want to build the GUI, run ```ant copy_frontend_local```
 
 ## Architecture ##
 
