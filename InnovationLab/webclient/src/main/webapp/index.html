@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="<%= locale %>" ng-app="innovationlabApp" ng-controller="appController" >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>innovationlabApp</title>
+	<meta name="keywords" content="innovationlabApp jee, java, architecture" />
+	<meta name="description" content="Lightweight REST JEE Arch Pattern" />
+	
+	<link href="res/css/themes.css" rel="stylesheet" type="text/css" />
+	<link href="res/css/basic.css" rel="stylesheet" type="text/css" />
+	<link href="res/css/elements.css" rel="stylesheet" type="text/css" />
+	<link href="res/css/viewports.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="{{ 'theme.color' | translate}}">
+	<div id="page" class="rows{{ 'theme.rows' | translate}} cols{{ 'theme.columns' | translate}} {{ 'theme.properties' | translate}}">
+			<div ng-view></div>
+				<div id="footerBox">
+		<p>&copy; LireJarp</p>
+	</div>
+	</div>
+
+	<script src="res/lib/angular.min.js" type="application/javascript"></script>
+	<script src="res/lib/angular-route.min.js" type="application/javascript"></script>
+	<script src="res/lib/angular-translate.min.js" type="application/javascript"></script>
+	<script src="res/lib/angular-translate-loader-static-files.min.js" type="application/javascript"></script>
+	
+	<script src="shared/directives/global.directives.js" type="application/javascript"></script>
+	<script src="shared/restfacade/rest.connector.factory.js"></script>
+	
+	<!-- DO NOT DELETE ###BEGIN### generated scripts -->
+<script src="shared/restfacade/idea.connector.factory.js" type="application/javascript"></script>
+<script src="viewcomponents/idea/idea.module.js" type="application/javascript" ></script>
+<script src="viewcomponents/idea/idea.routes.js" type="application/javascript" ></script>
+<script src="viewcomponents/idea/ideaSingleCtrl.js" type="application/javascript" ></script>
+<script src="viewcomponents/idea/ideaAllCtrl.js" type="application/javascript" ></script>
+
+	<!-- DO NOT DELETE ###END### generated scripts -->
+	
+	<script src="app.module.js"></script>
+	<script src="app.routes.js"></script>
+
+</body>
+</html>

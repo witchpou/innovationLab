@@ -1,0 +1,62 @@
+<div id="headerBox" ng-include="'menu.html'"></div>
+<div id="bodyBox">
+<div class="contain">
+<form name="ctrl.form" ng-init="sent=true;">
+<fieldset>
+<label for="headline">{{'idea.headline' | translate}}:</label>
+<input name="headline" id="headline" type="text" ng-model="ctrl.idea.headline"
+ng-minlength="1"
+ng-maxlength="150"
+required
+/>
+<label ng-show="ctrl.form.headline.$error.minlength">{{'error.minlength' | translate}}</label>
+<label ng-show="ctrl.form.headline.$error.maxlength">{{'error.maxlength' | translate}}</label>
+<label ng-show="ctrl.form.headline.$error.required">{{'error.required' | translate}}</label>
+<label ng-show="ctrl.form.headline.$error.pattern">{{'error.pattern' | translate}}</label>
+<div class="clear"></div>
+</fieldset>
+<fieldset>
+<label for="description">{{'idea.description' | translate}}:</label>
+<input name="description" id="description" type="text" ng-model="ctrl.idea.description"
+ng-minlength="1"
+ng-maxlength="260"
+required
+/>
+<label ng-show="ctrl.form.description.$error.minlength">{{'error.minlength' | translate}}</label>
+<label ng-show="ctrl.form.description.$error.maxlength">{{'error.maxlength' | translate}}</label>
+<label ng-show="ctrl.form.description.$error.required">{{'error.required' | translate}}</label>
+<label ng-show="ctrl.form.description.$error.pattern">{{'error.pattern' | translate}}</label>
+<div class="clear"></div>
+</fieldset>
+<fieldset>
+<label for="notes">{{'idea.notes' | translate}}:</label>
+<input name="notes" id="notes" type="text" ng-model="ctrl.idea.notes"
+ng-minlength="1"
+ng-maxlength="260"
+/>
+<label ng-show="ctrl.form.notes.$error.minlength">{{'error.minlength' | translate}}</label>
+<label ng-show="ctrl.form.notes.$error.maxlength">{{'error.maxlength' | translate}}</label>
+<label ng-show="ctrl.form.notes.$error.pattern">{{'error.pattern' | translate}}</label>
+<div class="clear"></div>
+</fieldset>
+<fieldset>
+<label for="rating">{{'idea.rating' | translate}}:</label>
+<input name="rating" id="rating" type="number" ng-model="ctrl.idea.rating" numberinput='' ng-pattern="/^[0-9]+$/"
+min="0"
+max="5"
+required
+/>
+<label ng-show="ctrl.form.rating.$error.pattern">{{'error.number' | translate}}</label>
+<label ng-show="ctrl.form.rating.$error.minlength">{{'error.minlength' | translate}}</label>
+<label ng-show="ctrl.form.rating.$error.maxlength">{{'error.maxlength' | translate}}</label>
+<label ng-show="ctrl.form.rating.$error.required">{{'error.required' | translate}}</label>
+<label ng-show="ctrl.form.rating.$error.pattern">{{'error.pattern' | translate}}</label>
+<div class="clear"></div>
+</fieldset>
+<div class="submitArea">
+<button class="buttonRounded" ng-click="ctrl.gotoIdea.all();"><img src="res/img/icons/back.png" border="0" /><span class="hidden">{{'button.back' | translate}}</span></button>
+<button class="buttonRounded right" ng-click="ctrl.doMaintain()"><img src="res/img/icons/save.png" border="0" /><span class="hidden">{{'button.save' | translate}}</span></button>
+</div>
+</form>
+</div>
+</div>

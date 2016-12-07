@@ -1,0 +1,43 @@
+<div id="headerBox" ng-include="'menu.html'"></div>
+
+<div id="subheaderBox" class="aCenter">
+	<div class="bottom">
+		<span class="button add"><a ng-click="ctrl.gotoIdea.create();">* {{'button.add' | translate}}</a></span>
+		<span class="button"><a ng-click="ctrl.idSelected != null && ctrl.gotoIdea.update(ctrl.idSelected);" ng-disabled="ctrl.idSelected == null">+ {{'button.update' | translate}}</a></span>
+		<span class="button"><a ng-click="ctrl.idSelected != null && ctrl.deleteIdea(ctrl.idSelected);" ng-disabled="ctrl.idSelected == null">- {{'button.delete' | translate}}</a></span>
+		<div class="clearer"></div>
+	</div>
+</div>
+
+<div id="bodyBox">
+	<div class="contain">
+		<table>
+			<colgroup>
+	    		<col class="">
+	    		<col class="">
+	    		<col class="">
+	    		<col class="">
+	    	</colgroup>
+		<thead>
+			<tr>
+				<th>{{'idea.headline' | translate}}</th>
+				<th>{{'idea.description' | translate}}</th>
+				<th>{{'idea.notes' | translate}}</th>
+				<th>{{'idea.rating' | translate}}</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr ng-repeat="idea in ctrl.ideaAll" ng-click="ctrl.setSelected(idea.id)" 
+				ng-class="{selected: idea.id === ctrl.idSelected }" 
+				ng-dblclick="ctrl.setSelected(idea.id);ctrl.gotoIdea.update(ctrl.idSelected);">
+
+				<td>{{idea.headline}}</td>
+				<td>{{idea.description}}</td>
+				<td>{{idea.notes}}</td>
+				<td>{{idea.rating}}</td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+		</table>
+	</div>	
+</div>
