@@ -20,6 +20,7 @@ button span,button.hint:hover span{display:block;position:static;padding:0;backg
 
 @media (max-width:520px) {
 #headerBox,#page table,#page thead,#page tbody,#page tr,#page th,#page td,#headerBox ul,fieldset table,fieldset tbody,fieldset tr,fieldset th,fieldset td{display:block;width:100%!important;height:auto;text-align:center!important}
+#headerBox td h1,#headerBox td h2,#headerBox td h3,#headerBox td h4,#headerBox td h5,#headerBox td h6{font-size:22px}
 #headerBox{padding:15px 0!important}
 #subheaderBox,#footerBox{padding-top:15px!important}
 #headerBox td:first-child img{width:70%!important}
@@ -47,5 +48,6 @@ button span,button.hint:hover span{display:block;position:static;padding:0;backg
 fieldset{margin-bottom:15px}
 fieldset:last-child{margin-bottom:0}
 input[type="text"],select{width:100%}
+.button{display:block;margin:0!important;width:100%}
 button.hint:hover span{display:none}
 }

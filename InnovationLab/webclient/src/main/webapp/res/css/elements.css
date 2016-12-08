@@ -84,7 +84,7 @@ table.acc.w3-show thead td{padding-bottom:1%}
 #headerBox td a{display:inline-block}
 #headerBox img{width:30%!important;height:auto!important}
 #headerBox td:first-child img{width:50%!important}
-#headerBox img:hover{-moz-opacity:.6;-webkit-opacity:.6;-o-opacity:.6;-ms-opacity:.6;opacity:.6}
+#headerBox a:hover img{-moz-opacity:1;-webkit-opacity:1;-o-opacity:1;-ms-opacity:1;opacity:1}
 
 form table{height:auto}
 form table table td{padding:0 0 0 0}
@@ -101,7 +101,7 @@ form table table tr:last-child td{padding:0}
 
 #headerBox ul{display:inline-block;list-style:none;margin:0;padding:0;vertical-align:top}
 #headerBox ul li{position:relative;display:inline-block;list-style:none;margin:0;padding:0;vertical-align:top}
-#headerBox ul li a{display:block;padding:.5vw 1.5vw;-moz-opacity:.6;-webkit-opacity:.6;-o-opacity:.6;-ms-opacity:.6;opacity:.6}
+#headerBox ul li a{display:block;padding:.5vw;-moz-opacity:.6;-webkit-opacity:.6;-o-opacity:.6;-ms-opacity:.6;opacity:.6}
 #headerBox ul li a:hover{-moz-opacity:1;-webkit-opacity:1;-o-opacity:1;-ms-opacity:1;opacity:1}
 #headerBox ul li:hover span.hidden{display:block;position:absolute;z-index:999;top:110%;left:20px;white-space:nowrap}
 
