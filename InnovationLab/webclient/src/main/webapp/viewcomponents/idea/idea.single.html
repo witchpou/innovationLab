@@ -3,6 +3,16 @@
 <div class="contain">
 <form name="ctrl.form" ng-init="sent=true;">
 <fieldset>
+<label for="created">{{'idea.created' | translate}}:</label>
+<input type="text" 
+	moment-picker="ctrl.dateformated" 
+	ng-model="ctrl.idea.created" 
+	ng-value="ctrl.idea.created | formatLocalDate"
+	today="true"
+/>
+<div class="clear"></div>
+</fieldset>
+<fieldset>
 <label for="headline">{{'idea.headline' | translate}}:</label>
 <input name="headline" id="headline" type="text" ng-model="ctrl.idea.headline"
 ng-minlength="1"

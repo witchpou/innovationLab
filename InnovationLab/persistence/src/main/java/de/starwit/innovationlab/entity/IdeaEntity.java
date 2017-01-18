@@ -1,14 +1,18 @@
 package de.starwit.innovationlab.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 @XmlRootElement
@@ -36,8 +40,8 @@ public class IdeaEntity extends AbstractEntity {
 	@Max(value = 5)
 	private Integer rating;
 	
+	private Date created;
 	
-
 	@Column(name="HEADLINE", nullable = false, length=150)
 	public String getHeadline() {
 		return headline;
@@ -72,5 +76,15 @@ public class IdeaEntity extends AbstractEntity {
 	
 	public void setRating(Integer rating) {
 		this.rating = rating;
+	}
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="CREATED")
+	public Date getCreated() {
+		return created;
+	}	
+	
+	public void setCreated(Date created) {
+		this.created = created;
 	}
 }

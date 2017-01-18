@@ -3,3 +3,5 @@ tomee/target/
 InnovationLab/packagewar/target/
 InnovationLab/persistence/target/
 InnovationLab/rest/target/
+bower_components/*
+bower_components

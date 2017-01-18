@@ -20,6 +20,7 @@
 	    	</colgroup>
 		<thead>
 			<tr>
+				<th>{{'idea.created' | translate}}</th>
 				<th>{{'idea.headline' | translate}}</th>
 				<th>{{'idea.description' | translate}}</th>
 				<th>{{'idea.notes' | translate}}</th>
@@ -31,6 +32,7 @@
 				ng-class="{selected: idea.id === ctrl.idSelected }" 
 				ng-dblclick="ctrl.setSelected(idea.id);ctrl.gotoIdea.update(ctrl.idSelected);">
 
+				<td>{{idea.created | formatLocalDate}}</td>
 				<td>{{idea.headline}}</td>
 				<td>{{idea.description}}</td>
 				<td>{{idea.notes}}</td>

@@ -11,6 +11,7 @@
 		
 		ctrl.doMaintain = doMaintain;
 		ctrl.gotoIdea = gotoIdea;
+		ctrl.dateformated = {};
 		init();
 
 		/**
@@ -45,6 +46,7 @@
 				}
 				if ($routeParams.is == null) {
 					ctrl.idea = {};
+					ctrl.idea.created = new Date();
 				}
 			});
 		}

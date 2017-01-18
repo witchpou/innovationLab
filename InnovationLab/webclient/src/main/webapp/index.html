@@ -5,11 +5,12 @@
 	<title>innovationlabApp</title>
 	<meta name="keywords" content="innovationlabApp jee, java, architecture" />
 	<meta name="description" content="Lightweight REST JEE Arch Pattern" />
-	
+
 	<link href="res/css/themes.css" rel="stylesheet" type="text/css" />
 	<link href="res/css/basic.css" rel="stylesheet" type="text/css" />
 	<link href="res/css/elements.css" rel="stylesheet" type="text/css" />
 	<link href="res/css/viewports.css" rel="stylesheet" type="text/css" />
+	<link href="res/css/angular-moment-picker.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="{{ 'theme.color' | translate}}">
@@ -24,10 +25,13 @@
 	<script src="res/lib/angular-route.min.js" type="application/javascript"></script>
 	<script src="res/lib/angular-translate.min.js" type="application/javascript"></script>
 	<script src="res/lib/angular-translate-loader-static-files.min.js" type="application/javascript"></script>
-	
+	<script src="res/lib/moment-with-locales.js"></script>
+	<script src="res/lib/tmhDynamicLocale.min.js"></script>
+	<script src="res/lib/angular-moment-picker.min.js"></script>
+
 	<script src="shared/directives/global.directives.js" type="application/javascript"></script>
 	<script src="shared/restfacade/rest.connector.factory.js"></script>
-	
+
 	<!-- DO NOT DELETE ###BEGIN### generated scripts -->
 <script src="shared/restfacade/idea.connector.factory.js" type="application/javascript"></script>
 <script src="viewcomponents/idea/idea.module.js" type="application/javascript" ></script>
@@ -36,7 +40,7 @@
 <script src="viewcomponents/idea/ideaAllCtrl.js" type="application/javascript" ></script>
 
 	<!-- DO NOT DELETE ###END### generated scripts -->
-	
+
 	<script src="app.module.js"></script>
 	<script src="app.routes.js"></script>
 
