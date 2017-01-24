@@ -6,6 +6,7 @@
 	angular.module('innovationlabApp', [
 		'tmh.dynamicLocale', // angular-dynamic-locale
 		'moment-picker',
+		'textAngular',
 	    'pascalprecht.translate',
 	    //DO NOT DELETE ###BEGIN### include generated files
 	    'innovationlabApp.idea',
@@ -33,17 +34,17 @@
 	}]);
 	
 	/**
-	 * Language Configuration via module pascalprecht.translate.
+	 * Date-picker configuration.
 	 */
 	angular.module('innovationlabApp').config(['momentPickerProvider', function (momentPickerProvider) {
 			var locale = window.navigator.userLanguage || window.navigator.language;
 			momentPickerProvider.options({
 	        /* Picker properties */
 	    	locale:		locale,
-	        format:        'LL',
+	        format:        'LLL',
 	        minView: 	'month',
-	        maxView: 	'day',
-	        startView:     'day',
+	        maxView: 	'minute',
+	        startView:     'month',
 	        autoclose:     true,
 	        today:         false,
 	        keyboard:      false

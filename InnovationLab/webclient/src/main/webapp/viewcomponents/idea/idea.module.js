@@ -4,7 +4,7 @@
  */
 (function() {
 	'use strict';
-	
-	angular.module('innovationlabApp.idea', ['ngRoute','pascalprecht.translate']);
+
+	angular.module('innovationlabApp.idea', ['ngRoute','pascalprecht.translate', 'textAngular']);
 	angular.module('innovationlabApp.idea').factory('ideaConnectorFactory', ideaConnectorFactory);
 })();

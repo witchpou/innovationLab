@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +30,7 @@ public class IdeaEntity extends AbstractEntity {
 	private String headline;
 	
 	@NotBlank
-	@Size(min = 1, max = 260)
+	@Lob
 	private String description;
 	
 	@Size(min = 1, max = 260)
@@ -51,7 +52,7 @@ public class IdeaEntity extends AbstractEntity {
 		this.headline = headline;
 	}
 
-	@Column(name="DESCRIPTION", nullable = false, length=260)
+	@Column(name="DESCRIPTION")
 	public String getDescription() {
 		return description;
 	}

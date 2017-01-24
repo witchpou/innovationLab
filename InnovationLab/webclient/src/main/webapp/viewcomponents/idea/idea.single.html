@@ -4,9 +4,9 @@
 <form name="ctrl.form" ng-init="sent=true;">
 <fieldset>
 <label for="created">{{'idea.created' | translate}}:</label>
-<input type="text" 
-	moment-picker="ctrl.dateformated" 
-	ng-model="ctrl.idea.created" 
+<input type="text"
+	moment-picker="ctrl.dateformated"
+	ng-model="ctrl.idea.created"
 	ng-value="ctrl.idea.created | formatLocalDate"
 	today="true"
 />
@@ -23,19 +23,6 @@ required
 <label ng-show="ctrl.form.headline.$error.maxlength">{{'error.maxlength' | translate}}</label>
 <label ng-show="ctrl.form.headline.$error.required">{{'error.required' | translate}}</label>
 <label ng-show="ctrl.form.headline.$error.pattern">{{'error.pattern' | translate}}</label>
-<div class="clear"></div>
-</fieldset>
-<fieldset>
-<label for="description">{{'idea.description' | translate}}:</label>
-<input name="description" id="description" type="text" ng-model="ctrl.idea.description"
-ng-minlength="1"
-ng-maxlength="260"
-required
-/>
-<label ng-show="ctrl.form.description.$error.minlength">{{'error.minlength' | translate}}</label>
-<label ng-show="ctrl.form.description.$error.maxlength">{{'error.maxlength' | translate}}</label>
-<label ng-show="ctrl.form.description.$error.required">{{'error.required' | translate}}</label>
-<label ng-show="ctrl.form.description.$error.pattern">{{'error.pattern' | translate}}</label>
 <div class="clear"></div>
 </fieldset>
 <fieldset>
@@ -61,6 +48,18 @@ required
 <label ng-show="ctrl.form.rating.$error.maxlength">{{'error.maxlength' | translate}}</label>
 <label ng-show="ctrl.form.rating.$error.required">{{'error.required' | translate}}</label>
 <label ng-show="ctrl.form.rating.$error.pattern">{{'error.pattern' | translate}}</label>
+<div class="clear"></div>
+</fieldset>
+<fieldset>
+<label for="description">{{'idea.description' | translate}}:</label>
+<div class="container lighter">
+		<div text-angular ng-model="ctrl.idea.description" 
+			name="description" id="description"
+			name="demo-editor" 
+			ta-text-editor-class="clearfix border-around container" 
+			ta-html-editor-class="border-around">
+		</div>
+</div>
 <div class="clear"></div>
 </fieldset>
 <div class="submitArea">

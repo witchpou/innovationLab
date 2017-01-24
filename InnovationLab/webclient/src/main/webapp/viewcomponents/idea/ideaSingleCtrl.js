@@ -4,14 +4,15 @@
 (function() {
 	'use strict';
 	angular.module('innovationlabApp.idea').controller('ideaSingleCtrl', ideaSingleCtrl);
-	
-	ideaSingleCtrl.$inject = ['$scope', '$routeParams', 'ideaConnectorFactory', 'gotoIdea'];
-	function ideaSingleCtrl($scope, $routeParams, ideaConnectorFactory, gotoIdea) {
+
+	ideaSingleCtrl.$inject = ['$scope', '$routeParams', 'ideaConnectorFactory', 'gotoIdea','textAngularManager'];
+	function ideaSingleCtrl($scope, $routeParams, ideaConnectorFactory, gotoIdea, textAngularManager) {
 		var ctrl = this;
-		
+
 		ctrl.doMaintain = doMaintain;
 		ctrl.gotoIdea = gotoIdea;
 		ctrl.dateformated = {};
+		'textAngularManager'
 		init();
 
 		/**
@@ -24,7 +25,7 @@
 				gotoIdea.all();
 			}
 		}
-		
+
 		function doMaintainThenGoto() {
 			var saveFunction = isUpdate() ? ideaConnectorFactory.updateIdea : ideaConnectorFactory.createIdea;
 			saveFunction(ctrl.idea).then(saveSuccessCallback(), function(){});
@@ -33,11 +34,14 @@
 		function isUpdate() {
 			return ctrl.idea != null && ctrl.idea.id != null;
 		}
-		
-		/** 
+
+		/**
 		 * Standard function for initialization.
 		 */
 		function init() {
+			$scope.version = textAngularManager.getVersion();
+			$scope.versionNumber = $scope.version.substring(1);
+			$scope.htmlContent='<h1>Test</h1>';
 			ctrl.idea = {};
 			$scope.$on('$routeChangeSuccess', function (scope, next, current) {
 				if ($routeParams.id != undefined && $routeParams.id !== ctrl.idea.id) {
@@ -50,14 +54,14 @@
 				}
 			});
 		}
-		
+
 		/**
 		 * Used for setting the database result to the representation-object in the controller.
 		 */
 		function setIdea(response) {
 			ctrl.idea = response;
 		}
-		
+
 		/**
 		 * Success message after saving.
 		 */
@@ -67,6 +71,6 @@
 				gotoIdea.all();
 			}
 		}
-	
+
 	}
 })();
