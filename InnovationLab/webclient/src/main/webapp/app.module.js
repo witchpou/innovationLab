@@ -6,6 +6,7 @@
 	angular.module('innovationlabApp', [
 		'tmh.dynamicLocale', // angular-dynamic-locale
 		'moment-picker',
+		'starRatings',
 		'textAngular',
 	    'pascalprecht.translate',
 	    //DO NOT DELETE ###BEGIN### include generated files
@@ -41,7 +42,7 @@
 			momentPickerProvider.options({
 	        /* Picker properties */
 	    	locale:		locale,
-	        format:        'LLL',
+	        format:        'LL',
 	        minView: 	'month',
 	        maxView: 	'minute',
 	        startView:     'month',

@@ -34,7 +34,7 @@
 				<td>{{idea.created | formatLocalDate}}</td>
 				<td>{{idea.headline}}</td>
 				<td>{{idea.notes}}</td>
-				<td>{{idea.rating}}</td>
+				<td><div class="star-rating" star-rating ng-model="idea.rating" max="5" readonly="true"></div></td>
 			</tr>
 		</tbody>
 		<tfoot></tfoot>

@@ -38,11 +38,7 @@ ng-maxlength="260"
 </fieldset>
 <fieldset>
 <label for="rating">{{'idea.rating' | translate}}:</label>
-<input name="rating" id="rating" type="number" ng-model="ctrl.idea.rating" numberinput='' ng-pattern="/^[0-9]+$/"
-min="0"
-max="5"
-required
-/>
+<div class="star-rating" star-rating ng-model="ctrl.idea.rating" max="5"></div>
 <label ng-show="ctrl.form.rating.$error.pattern">{{'error.number' | translate}}</label>
 <label ng-show="ctrl.form.rating.$error.minlength">{{'error.minlength' | translate}}</label>
 <label ng-show="ctrl.form.rating.$error.maxlength">{{'error.maxlength' | translate}}</label>

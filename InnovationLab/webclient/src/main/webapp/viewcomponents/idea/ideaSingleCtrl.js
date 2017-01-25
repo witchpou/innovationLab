@@ -27,6 +27,9 @@
 		}
 
 		function doMaintainThenGoto() {
+			if(ctrl.idea.rating == undefined) {
+				ctrl.idea.rating = 0;
+			}
 			var saveFunction = isUpdate() ? ideaConnectorFactory.updateIdea : ideaConnectorFactory.createIdea;
 			saveFunction(ctrl.idea).then(saveSuccessCallback(), function(){});
 		}
