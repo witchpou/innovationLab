@@ -45,7 +45,7 @@ angular.module('starRatings',[]).directive('starRating',
 				function(oldVal, newVal) {
 					if (newVal) {
 						updateStars();
-					} else if (newVal == undefined && oldVal != null) {
+					} else if ((newVal == undefined || newVal == 0) && (oldVal != null && oldVal != 0)) {
 						updateStars();
 					} else if (scope.stars == null) {
 						initStars();
