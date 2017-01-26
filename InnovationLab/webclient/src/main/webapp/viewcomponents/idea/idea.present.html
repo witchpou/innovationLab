@@ -1,0 +1,13 @@
+<div id="headerBox" ng-include="'menu.html'"></div>
+<div id="bodyBox">
+<div class="contain">
+<form name="ctrl.form" ng-init="sent=true;">
+<h1>{{ctrl.idea.headline}}</h1><div star-rating class="star-rating" ng-model="ctrl.idea.rating" max="5" readonly="true"></div>
+<p>
+<div ng-bind-html="ctrl.idea.description"></div>
+</p>
+<div class="submitArea">
+	<button class="buttonRounded" ng-click="ctrl.gotoIdea.all();"><img src="res/img/icons/back.png" border="0" /><span class="hidden">{{'button.back' | translate}}</span></button>
+</div>
+</form>
+</div>

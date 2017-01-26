@@ -39,6 +39,14 @@ ideaConnectorFactory = ['$http', '$location', 'restConnectorFactory', function i
 			restConnectorFactory.handleResponseError
 		);
 	};
+	
+	function updateRating(rating) {
+		return $http.post('api/idea/rate', rating)
+		.then(
+			restConnectorFactory.handleResponseSuccess,
+			restConnectorFactory.handleResponseError
+		);
+	};
 		
 	function deleteIdea(id) {
 		return $http.delete('api/idea/' + id)

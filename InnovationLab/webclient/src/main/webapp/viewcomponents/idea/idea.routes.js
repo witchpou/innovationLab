@@ -19,6 +19,9 @@
 	    },
 	    factory.loaderror = function() {
 	    	$location.path('/');
+	    },
+	    factory.present = function(id) {
+	    	$location.path('/viewcomponents/idea-present/' + id);
 	    }
 		return factory;
     };
@@ -49,6 +52,15 @@
 			title : "idea.update.title",
 			subtitle : "",
 			templateUrl : "viewcomponents/idea/idea.single.html",
+	        resolve: {
+	        	ideaConnectorFactory: ideaConnectorFactory
+	         }		
+		}).when('/viewcomponents/idea-present/:id', {
+			controller : 'ideaPresentCtrl',
+			controllerAs : 'ctrl',
+			title : "idea.present.title",
+			subtitle : "",
+			templateUrl : "viewcomponents/idea/idea.present.html",
 	        resolve: {
 	        	ideaConnectorFactory: ideaConnectorFactory
 	         }		

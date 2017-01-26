@@ -24,6 +24,7 @@
 				<th>{{'idea.headline' | translate}}</th>
 				<th>{{'idea.notes' | translate}}</th>
 				<th>{{'idea.rating' | translate}}</th>
+				<th></th>
 			</tr>	
 		</thead>
 		<tbody>
@@ -35,6 +36,11 @@
 				<td>{{idea.headline}}</td>
 				<td>{{idea.notes}}</td>
 				<td><div class="star-rating" star-rating ng-model="idea.rating" max="5" readonly="true"></div></td>
+				<td>
+					<button class="buttonRounded" ng-click="ctrl.setSelected(idea.id);ctrl.gotoIdea.present(ctrl.idSelected);">
+						<img src="res/img/icons/next.png" border="0" /><span class="hidden">{{'button.next' | translate}}</span>
+					</button>
+				</td>
 			</tr>
 		</tbody>
 		<tfoot></tfoot>

@@ -3,34 +3,33 @@
  */
 (function() {
 	'use strict';
-	angular.module('innovationlabApp.idea').controller('ideaSingleCtrl', ideaSingleCtrl);
+	angular.module('innovationlabApp.idea').controller('ideaPresentCtrl', ideaPresentCtrl);
 
-	ideaSingleCtrl.$inject = ['$scope', '$routeParams', 'ideaConnectorFactory', 'gotoIdea','textAngularManager'];
-	function ideaSingleCtrl($scope, $routeParams, ideaConnectorFactory, gotoIdea, textAngularManager) {
+	ideaPresentCtrl.$inject = ['$scope', '$routeParams', 'ideaConnectorFactory', 'gotoIdea'];
+	function ideaPresentCtrl($scope, $routeParams, ideaConnectorFactory, gotoIdea) {
 		var ctrl = this;
 
-		ctrl.doMaintain = doMaintain;
+		ctrl.doRate = doRate;
 		ctrl.gotoIdea = gotoIdea;
-		ctrl.dateformated = {};
 		init();
 
 		/**
 		 * Standard function to edit the project configuration.
 		 */
-		function doMaintain() {
+		function doRate() {
 			if (ctrl.form.$dirty) {
-				doMaintainThenGoto();
+				doRateThenGoto();
 			} else {
 				gotoIdea.all();
 			}
 		}
 
-		function doMaintainThenGoto() {
-			if(ctrl.idea.rating == undefined) {
-				ctrl.idea.rating = 0;
+		function doRateThenGoto() {
+			if(ctrl.rating == undefined) {
+				ctrl.rating = 0;
 			}
-			var saveFunction = isUpdate() ? ideaConnectorFactory.updateIdea : ideaConnectorFactory.createIdea;
-			saveFunction(ctrl.idea).then(saveSuccessCallback(), function(){});
+			var saveFunction = isUpdate() ? ideaConnectorFactory.updateRating : {};
+			saveFunction(ctrl.rating).then(saveSuccessCallback(), function(){});
 		}
 
 		function isUpdate() {
@@ -41,18 +40,14 @@
 		 * Standard function for initialization.
 		 */
 		function init() {
-			$scope.version = textAngularManager.getVersion();
-			$scope.versionNumber = $scope.version.substring(1);
-			$scope.htmlContent='<h1>Test</h1>';
 			ctrl.idea = {};
+			ctrl.rating = {};
 			$scope.$on('$routeChangeSuccess', function (scope, next, current) {
 				if ($routeParams.id != undefined && $routeParams.id !== ctrl.idea.id) {
 					ctrl.idea.id = $routeParams.id;
+					ctrl.rating.idea = ctrl.idea;
+					ctrl.rating.ratingValue = 0;
 					ideaConnectorFactory.loadIdea(ctrl.idea.id).then(setIdea, function(){});
-				}
-				if ($routeParams.is == null) {
-					ctrl.idea = {};
-					ctrl.idea.created = new Date();
 				}
 			});
 		}
@@ -69,7 +64,6 @@
 		 */
 		function saveSuccessCallback() {
 			return function (response) {
-				setIdea(response);
 				gotoIdea.all();
 			}
 		}
