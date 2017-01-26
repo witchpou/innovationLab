@@ -25,6 +25,7 @@
 	"idea.create.title": "create idea",
 	"idea.update.title": "edit idea",
 	"idea.present.title": "show idea",
+	"idea.myrating": "my rating",
 
 	"###END###" : "Genererierung endet",
 	
@@ -33,6 +34,7 @@
 	"button.update" : "edit",
 	"button.delete" : "delete",
 	"button.back" : "back",
-	"button.save" : "save"
+	"button.save" : "save",
+	"button.rate" : "rate"
 	
 }

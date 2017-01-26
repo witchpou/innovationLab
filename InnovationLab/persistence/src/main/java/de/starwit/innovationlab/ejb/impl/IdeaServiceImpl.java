@@ -11,6 +11,7 @@ public class IdeaServiceImpl extends AbstractServiceImpl<IdeaEntity> implements 
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Override
 	public void rate(RatingEntity entity) {
 		getEntityManager().persist(entity);
 		getEntityManager().flush();

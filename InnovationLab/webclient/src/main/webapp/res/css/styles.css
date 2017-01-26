@@ -1,0 +1,14 @@
+.showidea-picture-container {
+	display: inline-block !important;width:100%;
+}
+.leftbox {
+	float:left;
+}
+
+.rightbox {
+	float:right;
+}
+
+.description-container {
+	padding: 2% 0;
+}

@@ -4,7 +4,8 @@ ideaConnectorFactory = ['$http', '$location', 'restConnectorFactory', function i
     		loadIdea: loadIdea,
     		createIdea: createIdea,
     		updateIdea: updateIdea,
-    		deleteIdea : deleteIdea
+    		deleteIdea : deleteIdea,
+    		rate : rate
      };
     return factory;
 	
@@ -40,7 +41,7 @@ ideaConnectorFactory = ['$http', '$location', 'restConnectorFactory', function i
 		);
 	};
 	
-	function updateRating(rating) {
+	function rate(rating) {
 		return $http.post('api/idea/rate', rating)
 		.then(
 			restConnectorFactory.handleResponseSuccess,

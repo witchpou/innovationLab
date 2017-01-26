@@ -1,17 +1,17 @@
 package de.starwit.innovationlab.entity;
 
-import java.beans.Transient;
 import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -40,11 +40,11 @@ public class IdeaEntity extends AbstractEntity {
 	@Size(min = 1, max = 260)
 	private String notes;
 	
-	private Integer rating;
-	
 	private Set<RatingEntity> ratings;
 
 	private Date created;
+	
+	private Long rating;
 	
 	@Column(name="HEADLINE", nullable = false, length=150)
 	public String getHeadline() {
@@ -74,14 +74,18 @@ public class IdeaEntity extends AbstractEntity {
 	}
 	
 	@Transient
-	public Integer getRating() {
+	public Long getRating() {
+		if (getRatings() == null || getRatings().size() == 0) {
+			return 0L;
+		}
+		Long rating = Math.round(getRatings().stream().mapToLong(RatingEntity::getRatingValue).average().getAsDouble());
 		return rating;
 	}
 	
 	public void setRating(Integer rating) {
-		this.rating = rating;
-	}
 
+	}
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name="CREATED")
 	public Date getCreated() {
@@ -94,7 +98,7 @@ public class IdeaEntity extends AbstractEntity {
 	
 	@XmlTransient
 	@JsonIgnore
-	@OneToMany(mappedBy="idea", orphanRemoval=true)
+	@OneToMany(mappedBy="idea", fetch=FetchType.EAGER)
 	public Set<RatingEntity> getRatings() {
 		return ratings;
 	}
@@ -102,10 +106,5 @@ public class IdeaEntity extends AbstractEntity {
 	public void setRatings(Set<RatingEntity> ratings) {
 		this.ratings = ratings;
 	}
-	
-    @PostLoad
-    public void calculateRating() {
-    	rating = getRatings().stream().mapToInt(RatingEntity::getRatingValue).sum();
-    }
 	
 }

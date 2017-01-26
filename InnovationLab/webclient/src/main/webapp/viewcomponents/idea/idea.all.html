@@ -37,9 +37,7 @@
 				<td>{{idea.notes}}</td>
 				<td><div class="star-rating" star-rating ng-model="idea.rating" max="5" readonly="true"></div></td>
 				<td>
-					<button class="buttonRounded" ng-click="ctrl.setSelected(idea.id);ctrl.gotoIdea.present(ctrl.idSelected);">
-						<img src="res/img/icons/next.png" border="0" /><span class="hidden">{{'button.next' | translate}}</span>
-					</button>
+					<span class="button"><a ng-click="ctrl.setSelected(idea.id);ctrl.gotoIdea.present(ctrl.idSelected);">{{'idea.present.title' | translate}} <img src="res/img/icons/next.png" border="0" height="30px"/></a></span>
 				</td>
 			</tr>
 		</tbody>

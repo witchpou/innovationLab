@@ -17,7 +17,7 @@
 		 * Standard function to edit the project configuration.
 		 */
 		function doRate() {
-			if (ctrl.form.$dirty) {
+			if (ctrl.rating != undefined) {
 				doRateThenGoto();
 			} else {
 				gotoIdea.all();
@@ -28,7 +28,7 @@
 			if(ctrl.rating == undefined) {
 				ctrl.rating = 0;
 			}
-			var saveFunction = isUpdate() ? ideaConnectorFactory.updateRating : {};
+			var saveFunction = isUpdate() ? ideaConnectorFactory.rate : function(){};
 			saveFunction(ctrl.rating).then(saveSuccessCallback(), function(){});
 		}
 

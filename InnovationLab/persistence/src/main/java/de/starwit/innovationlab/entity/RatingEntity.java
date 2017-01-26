@@ -19,16 +19,16 @@ public class RatingEntity extends AbstractEntity {
 	@NotNull
 	@Min(value = 0)
 	@Max(value = 5)
-	private Integer ratingValue;
+	private Long ratingValue;
 	
 	private IdeaEntity idea;
 
 	@Column(name="RATINGVALUE", nullable = false)
-	public Integer getRatingValue() {
+	public Long getRatingValue() {
 		return ratingValue;
 	}
 	
-	public void setRatingValue(Integer ratingValue) {
+	public void setRatingValue(Long ratingValue) {
 		this.ratingValue = ratingValue;
 	}
 	

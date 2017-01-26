@@ -20,11 +20,12 @@
 	"idea.headline": "Titel",
 	"idea.description": "Kurzbeschreibung",
 	"idea.notes": "Notizen",
-	"idea.rating": "Bewertung",
+	"idea.rating": "Gesamtbewertung",
 	"idea.all.title": "Idee anzeigen",
 	"idea.create.title": "Idee erfassen",
 	"idea.update.title": "Idee bearbeiten",
 	"idea.present.title": "Idee anzeigen",
+	"idea.myrating": "meine Bewertung",
 
 	"###END###" : "Genererierung endet",
 	
@@ -32,6 +33,7 @@
 	"button.create" : "hinzufügen",
 	"button.update" : "bearbeiten",
 	"button.delete" : "löschen",
-	"button.back" : "zurück"
+	"button.back" : "zurück",
+	"button.rate" : "bewerten"
 	
 }
