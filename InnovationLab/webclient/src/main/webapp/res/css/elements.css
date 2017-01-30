@@ -14,7 +14,7 @@ input:focus,select:focus,textarea:focus{border:1px solid #3f3f3f}
 textarea{overflow:auto}
 select{cursor:pointer}
 
-label{display:block;padding:0 0 7px 0;width:100%;font-weight:normal;color:#7f7f7f}
+label{display:block;padding:20px 0 0 0;width:100%;font-weight:normal;color:#7f7f7f}
 span{padding:0 0 2% 0;width:100%;font-weight:normal;}
 
 ng-invalid{border:1px solid red}

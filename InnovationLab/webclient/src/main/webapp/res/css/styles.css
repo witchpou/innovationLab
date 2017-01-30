@@ -1,14 +1,44 @@
-.showidea-picture-container {
-	display: inline-block !important;width:100%;
+.showidea-picture-container img{
+    position:absolute;
+    z-index:0;
+    height:200px;
+    width:100%;
+    object-fit: cover;
 }
+.showidea-picture-container {
+	position:relative;
+	display: inline-block !important;width:100%;
+	height:200px;
+	overflow:hidden;
+}
+
 .leftbox {
 	float:left;
+	position:relative;
+	z-index:1;
 }
 
 .rightbox {
 	float:right;
+	position:relative;
+    z-index:1;
 }
 
 .description-container {
 	padding: 2% 0;
+}
+
+.image-chooser img{
+    position:absolute;
+    z-index:0;
+    width: 96%;
+    object-fit: cover;
+}
+
+.image-chooser {
+	position:relative;
+	display: inline-block !important;width:100%;
+	height:240px;
+	overflow:hidden;
+	padding: 0 0;
 }

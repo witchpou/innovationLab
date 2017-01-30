@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+
 import de.starwit.innovationlab.api.rest.IdeaRest;
 
 

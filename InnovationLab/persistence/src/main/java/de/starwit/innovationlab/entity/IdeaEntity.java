@@ -1,5 +1,6 @@
 package de.starwit.innovationlab.entity;
 
+import java.sql.Blob;
 import java.util.Date;
 import java.util.Set;
 
@@ -34,7 +35,6 @@ public class IdeaEntity extends AbstractEntity {
 	private String headline;
 	
 	@NotBlank
-	@Lob
 	private String description;
 	
 	@Size(min = 1, max = 260)
@@ -45,6 +45,8 @@ public class IdeaEntity extends AbstractEntity {
 	private Date created;
 	
 	private Long rating;
+	
+	private byte[] image;
 	
 	@Column(name="HEADLINE", nullable = false, length=150)
 	public String getHeadline() {
@@ -105,6 +107,16 @@ public class IdeaEntity extends AbstractEntity {
 
 	public void setRatings(Set<RatingEntity> ratings) {
 		this.ratings = ratings;
+	}
+	
+	@Column(name="IMAGE")
+	@Lob
+	public byte[] getImage() {
+		return this.image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	
 }

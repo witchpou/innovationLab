@@ -57,6 +57,7 @@
 		 */
 		function setIdea(response) {
 			ctrl.idea = response;
+			ideaConnectorFactory.getImageFromBackend(ctrl.idea.id).then(getImageSuccessCallback, function(response){});
 		}
 
 		/**
@@ -67,6 +68,5 @@
 				gotoIdea.all();
 			}
 		}
-
 	}
 })();

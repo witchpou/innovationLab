@@ -20,6 +20,7 @@
 	"idea.headline": "title",
 	"idea.description": "description",
 	"idea.notes": "notes",
+	"idea.image": "title image",
 	"idea.rating": "rating",
 	"idea.all.title": "show idea",
 	"idea.create.title": "create idea",

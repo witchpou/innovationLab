@@ -5,13 +5,14 @@
 	'use strict';
 	angular.module('innovationlabApp.idea').controller('ideaSingleCtrl', ideaSingleCtrl);
 
-	ideaSingleCtrl.$inject = ['$scope', '$routeParams', 'ideaConnectorFactory', 'gotoIdea','textAngularManager'];
-	function ideaSingleCtrl($scope, $routeParams, ideaConnectorFactory, gotoIdea, textAngularManager) {
+	ideaSingleCtrl.$inject = ['$scope', '$routeParams', '$document', 'ideaConnectorFactory', 'gotoIdea','textAngularManager'];
+	function ideaSingleCtrl($scope, $routeParams, $document, ideaConnectorFactory, gotoIdea, textAngularManager) {
 		var ctrl = this;
 
 		ctrl.doMaintain = doMaintain;
 		ctrl.gotoIdea = gotoIdea;
 		ctrl.dateformated = {};
+		ctrl.onImageSelected = onImageSelected;
 		init();
 
 		/**
@@ -28,6 +29,9 @@
 		function doMaintainThenGoto() {
 			if(ctrl.idea.rating == undefined) {
 				ctrl.idea.rating = 0;
+			}
+			if($scope.myImage != undefined) {
+				ideaConnectorFactory.uploadImage(ctrl.idea.id, $scope.myImage);
 			}
 			var saveFunction = isUpdate() ? ideaConnectorFactory.updateIdea : ideaConnectorFactory.createIdea;
 			saveFunction(ctrl.idea).then(saveSuccessCallback(), function(){});
@@ -55,6 +59,7 @@
 					ctrl.idea.created = new Date();
 				}
 			});
+			
 		}
 
 		/**
@@ -62,6 +67,7 @@
 		 */
 		function setIdea(response) {
 			ctrl.idea = response;
+			ideaConnectorFactory.getImageFromBackend(ctrl.idea.id);
 		}
 
 		/**
@@ -69,10 +75,26 @@
 		 */
 		function saveSuccessCallback() {
 			return function (response) {
-				setIdea(response);
+				if ($scope.myImage != null) {
+					ideaConnectorFactory.uploadImage(response.id, $scope.myImage);
+				}
+//				setIdea(response);
 				gotoIdea.all();
 			}
-		}
-
+		};
+		
+		function onImageSelected(input) {
+		    if (input) {
+		        $scope.myImage = input;
+		        $document[0].getElementById('image-preview').attributes['src'].value = null;
+		    }
+		};
+		
+		function getImageSuccessCallback(response) {
+			$document[0].getElementById('image-preview').attributes['src'].value = 'data:image/png;base64,' + response.data;
+		};
+		
+		function getImageErrorCallback(response) {
+		};
 	}
 })();

@@ -27,13 +27,18 @@ required
 </fieldset>
 <fieldset>
 <label for="notes">{{'idea.notes' | translate}}:</label>
-<input name="notes" id="notes" type="text" ng-model="ctrl.idea.notes"
-ng-minlength="1"
-ng-maxlength="260"
-/>
+<input name="notes" id="notes" type="text" ng-model="ctrl.idea.notes" ng-minlength="1" ng-maxlength="260"/>
 <label ng-show="ctrl.form.notes.$error.minlength">{{'error.minlength' | translate}}</label>
 <label ng-show="ctrl.form.notes.$error.maxlength">{{'error.maxlength' | translate}}</label>
 <label ng-show="ctrl.form.notes.$error.pattern">{{'error.pattern' | translate}}</label>
+<div class="clear"></div>
+</fieldset>
+<fieldset>
+<label for="image">{{'idea.image' | translate}}:</label>
+<div class="image-chooser">
+	<img id="image-preview" src=""></img>
+	<image-picker image-selected="ctrl.onImageSelected(imageFile)" />
+</div>
 <div class="clear"></div>
 </fieldset>
 <fieldset>

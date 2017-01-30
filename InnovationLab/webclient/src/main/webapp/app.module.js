@@ -6,6 +6,7 @@
 	angular.module('innovationlabApp', [
 		'tmh.dynamicLocale', // angular-dynamic-locale
 		'moment-picker',
+		'dahr.ng-image-picker',
 		'starRatings',
 		'textAngular',
 	    'pascalprecht.translate',
