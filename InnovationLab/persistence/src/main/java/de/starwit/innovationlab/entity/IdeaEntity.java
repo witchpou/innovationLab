@@ -1,6 +1,5 @@
 package de.starwit.innovationlab.entity;
 
-import java.sql.Blob;
 import java.util.Date;
 import java.util.Set;
 
@@ -58,6 +57,7 @@ public class IdeaEntity extends AbstractEntity {
 	}
 
 	@Column(name="DESCRIPTION")
+	@Lob
 	public String getDescription() {
 		return description;
 	}
@@ -80,7 +80,7 @@ public class IdeaEntity extends AbstractEntity {
 		if (getRatings() == null || getRatings().size() == 0) {
 			return 0L;
 		}
-		Long rating = Math.round(getRatings().stream().mapToLong(RatingEntity::getRatingValue).average().getAsDouble());
+		rating = Math.round(getRatings().stream().mapToLong(RatingEntity::getRatingValue).average().getAsDouble());
 		return rating;
 	}
 	

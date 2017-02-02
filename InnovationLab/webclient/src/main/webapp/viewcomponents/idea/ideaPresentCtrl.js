@@ -5,8 +5,8 @@
 	'use strict';
 	angular.module('innovationlabApp.idea').controller('ideaPresentCtrl', ideaPresentCtrl);
 
-	ideaPresentCtrl.$inject = ['$scope', '$routeParams', 'ideaConnectorFactory', 'gotoIdea'];
-	function ideaPresentCtrl($scope, $routeParams, ideaConnectorFactory, gotoIdea) {
+	ideaPresentCtrl.$inject = ['$scope', '$routeParams', '$document', 'ideaConnectorFactory', 'gotoIdea'];
+	function ideaPresentCtrl($scope, $routeParams, $document, ideaConnectorFactory, gotoIdea) {
 		var ctrl = this;
 
 		ctrl.doRate = doRate;
@@ -57,7 +57,7 @@
 		 */
 		function setIdea(response) {
 			ctrl.idea = response;
-			ideaConnectorFactory.getImageFromBackend(ctrl.idea.id).then(getImageSuccessCallback, function(response){});
+			ideaConnectorFactory.getImageFromBackend(ctrl.idea.id).then(getImageSuccessCallback, getImageErrorCallback);
 		}
 
 		/**
@@ -68,5 +68,12 @@
 				gotoIdea.all();
 			}
 		}
+		
+		function getImageSuccessCallback(response) {
+			$document[0].getElementById('image-preview').attributes['src'].value = 'data:image/png;base64,' + response.data;
+		};
+		
+		function getImageErrorCallback(response) {
+		};
 	}
 })();

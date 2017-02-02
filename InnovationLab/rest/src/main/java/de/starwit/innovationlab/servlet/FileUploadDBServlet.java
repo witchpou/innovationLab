@@ -12,13 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import de.starwit.innovationlab.ejb.IdeaService;
+import de.starwit.innovationlab.ejb.impl.IdeaServiceImpl;
  
 @WebServlet("/uploadFile")
-@MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
+@MultipartConfig(maxFileSize = 1048576)    // upload file's size up to 1MB
 public class FileUploadDBServlet extends HttpServlet {
      
 	private static final long serialVersionUID = 1L;
+	private static Logger LOG = Logger.getLogger(IdeaServiceImpl.class);
 
 	@Inject
     IdeaService ideaService;
@@ -43,7 +47,7 @@ public class FileUploadDBServlet extends HttpServlet {
             }
     		
     	} catch(NumberFormatException e) {
-    		//log
+    		LOG.info("No valid id was transfered in the request. Request-Parameter 'id' has to be set to a number.");
     	}
     }
 }

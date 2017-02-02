@@ -42,16 +42,6 @@ required
 <div class="clear"></div>
 </fieldset>
 <fieldset>
-<label for="rating">{{'idea.rating' | translate}}:</label>
-<div class="star-rating" star-rating ng-model="ctrl.idea.rating" max="5"></div>
-<label ng-show="ctrl.form.rating.$error.pattern">{{'error.number' | translate}}</label>
-<label ng-show="ctrl.form.rating.$error.minlength">{{'error.minlength' | translate}}</label>
-<label ng-show="ctrl.form.rating.$error.maxlength">{{'error.maxlength' | translate}}</label>
-<label ng-show="ctrl.form.rating.$error.required">{{'error.required' | translate}}</label>
-<label ng-show="ctrl.form.rating.$error.pattern">{{'error.pattern' | translate}}</label>
-<div class="clear"></div>
-</fieldset>
-<fieldset>
 <label for="description">{{'idea.description' | translate}}:</label>
 <div class="container lighter">
 		<div text-angular ng-model="ctrl.idea.description" 

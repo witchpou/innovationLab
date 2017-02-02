@@ -6,9 +6,9 @@
 	<div id="bodyBox" style="display: inline-block !important;width:100%;background:transparent;">
 		<div class="leftbox"><h1>{{ctrl.idea.headline}}</h1></div>
 		<div class="rightbox">
-			<label>{{'idea.rating' | translate}}: </label>
+			{{'idea.rating' | translate}}:
 			<div star-rating class="star-rating" ng-model="ctrl.idea.rating" max="5" readonly="true"></div>
-			<label>{{'idea.myrating' | translate}}: </label>
+			{{'idea.myrating' | translate}}:
 			<div star-rating class="star-rating" ng-model="ctrl.rating.ratingValue" max="5"></div>
 		</div>
 	</div>
@@ -17,8 +17,6 @@
 <div class="description-container">
 	<div ng-bind-html="ctrl.idea.description"></div>
 </div>
-
-
 <div class="submitArea">
 <button class="buttonRounded" ng-click="ctrl.gotoIdea.all();"><img src="res/img/icons/back.png" border="0" /><span class="hidden">{{'button.back' | translate}}</span></button>
 <button class="buttonRounded right" ng-click="ctrl.doRate()"><img src="res/img/icons/save.png" border="0" /><span class="hidden">{{'button.rate' | translate}}</span></button>

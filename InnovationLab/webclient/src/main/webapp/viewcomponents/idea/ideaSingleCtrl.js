@@ -47,7 +47,6 @@
 		function init() {
 			$scope.version = textAngularManager.getVersion();
 			$scope.versionNumber = $scope.version.substring(1);
-			$scope.htmlContent='<h1>Test</h1>';
 			ctrl.idea = {};
 			$scope.$on('$routeChangeSuccess', function (scope, next, current) {
 				if ($routeParams.id != undefined && $routeParams.id !== ctrl.idea.id) {
@@ -67,7 +66,7 @@
 		 */
 		function setIdea(response) {
 			ctrl.idea = response;
-			ideaConnectorFactory.getImageFromBackend(ctrl.idea.id);
+			ideaConnectorFactory.getImageFromBackend(ctrl.idea.id).then(getImageSuccessCallback, getImageErrorCallback);
 		}
 
 		/**
@@ -78,7 +77,6 @@
 				if ($scope.myImage != null) {
 					ideaConnectorFactory.uploadImage(response.id, $scope.myImage);
 				}
-//				setIdea(response);
 				gotoIdea.all();
 			}
 		};

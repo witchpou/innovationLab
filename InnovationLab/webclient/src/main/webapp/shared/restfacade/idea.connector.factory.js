@@ -1,4 +1,4 @@
-ideaConnectorFactory = ['$http', '$location', '$document', 'restConnectorFactory', function ideaConnectorFactory ($http, $location, $document, restConnectorFactory) {
+ideaConnectorFactory = ['$http', '$location', 'restConnectorFactory', function ideaConnectorFactory ($http, $location, restConnectorFactory) {
     var factory = {
     		getIdeaAll: getIdeaAll,
     		loadIdea: loadIdea,
@@ -62,7 +62,6 @@ ideaConnectorFactory = ['$http', '$location', '$document', 'restConnectorFactory
 	function uploadImage(id, file) {
 	        var fd = new FormData();
 	        fd.append('image', file);
-	        fd.append('id', id);
 	        return $http.post('uploadFile', fd, {
 	            transformRequest: angular.identity,
 	            headers: {'Content-Type': undefined},
@@ -72,18 +71,5 @@ ideaConnectorFactory = ['$http', '$location', '$document', 'restConnectorFactory
 	
 	function getImageFromBackend(id) {
 		return $http.get('api/idea/getImage/' + id)			
-		.then(
-				getImageSuccessCallback,
-				getImageErrorCallback
-		);
-
 	};
-	
-	function getImageSuccessCallback(response) {
-		$document[0].getElementById('image-preview').attributes['src'].value = 'data:image/png;base64,' + response.data;
-	};
-	
-	function getImageErrorCallback(response) {
-	};
-	
 }];
