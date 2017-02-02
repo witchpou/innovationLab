@@ -45,12 +45,15 @@ required
 <label for="description">{{'idea.description' | translate}}:</label>
 <div class="container lighter">
 		<div text-angular ng-model="ctrl.idea.description" 
-			name="description" id="description"
+			name="descriptionedit" id="descriptionedit"
 			name="demo-editor" 
 			ta-text-editor-class="clearfix border-around container" 
-			ta-html-editor-class="border-around">
+			ta-html-editor-class="border-around" required>
 		</div>
 </div>
+
+<input name="description" id="description" type="hidden" ng-model="ctrl.idea.description" required />
+<label ng-show="ctrl.form.description.$error.required">{{'error.required' | translate}}</label>
 <div class="clear"></div>
 </fieldset>
 <div class="submitArea">
