@@ -70,7 +70,7 @@ table,th,td{border:medium none}
 table{table-layout:fixed;border-collapse:collapse;border-spacing:0;width:100%}
 #bodyBox tbody tr:first-child{border-top:1px solid #afafaf}
 #bodyBox tbody table tr{border:none!important; cursor:pointer}
-th,td{padding:.5% 0.5%;text-align:left;vertical-align:top}
+th,td{padding:.5% 0.5%;text-align:left;vertical-align:middle}
 tbody,thead+tbody tr:first-child th,thead+tbody tr:first-child td{padding-top:0.5%}
 tbody tr th, tbody tr td{padding-top:0.5%; padding-left: 0.5%; padding-right: 0.5%;}
  
