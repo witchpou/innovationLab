@@ -3,11 +3,12 @@
     	ant script that can setup and run this project including maven calls
   	</description>
 
-	<property name="runtime_path" value="../tomee" /> <!-- TODO what about websphere liberty --> 
+	<property name="tomee_path" value="tomee" /> <!-- TODO what about websphere liberty --> 
+	<property name="app_path" value="InnovationLab" />
 
-	<property name="ui_src" location="webclient/src/main/webapp/" />
-	<property name="warfile" value="target/innovationlab.war" />
-	<property name="ui_dest" value="${basedir}/target/innovationlab" />
+	<property name="ui_src" location="${app_path}/webclient/src/main/webapp/" />
+	<property name="warfile" value="${app_path}/target/innovationlab.war" />
+	<property name="ui_dest" value="${basedir}/${app_path}/target/innovationlab" />
 	
 	<property name="sql_create" value="
 			DROP DATABASE IF EXISTS innovationlab;
@@ -17,6 +18,7 @@
 			GRANT ALL PRIVILEGES ON innovationlab.* TO 'innovationlab'@'localhost';" />
 
 	<target name="setup_project" depends="h2,stop_tomee,build_tomee,build_application,run_tomee"></target>
+	<target name="setup_docker" depends="h2,build_tomee_docker,build_application"></target>
 	<target name="setup_project_mysql" depends="mysql,stop_tomee,build_tomee,build_application,run_tomee"></target>
 	<target name="rebuild_application" depends="stop_tomee,build_application,run_tomee"></target>
 	<target name="clean_all" depends="stop_tomee,clean_tomee,clean_application"></target>
@@ -49,7 +51,7 @@
 	<target name="build_application">
 		<echo>build war</echo>
 		<antcall target="call_maven">
-			<param name="exec_dir" value="."/>
+			<param name="exec_dir" value="${basedir}/${app_path}"/>
 			<param name="mvn_command" value="clean package -Dmaven.test.skip=true -Dhibernate.dialect=${hibernate.dialect}"/>
 		</antcall>	
 	</target>
@@ -57,14 +59,14 @@
 	<target name="build_application_with_tests">
 		<echo>build war</echo>
 		<antcall target="call_maven">
-			<param name="exec_dir" value="."/>
+			<param name="exec_dir" value="${basedir}/${app_path}"/>
 			<param name="mvn_command" value="clean package -Dhibernate.dialect=${hibernate.dialect}"/>
 		</antcall>	
 	</target>
 
 	<target name="clean_application">
 		<antcall target="call_maven">
-			<param name="exec_dir" value="."/>
+			<param name="exec_dir" value="${basedir}/${app_path}"/>
 			<param name="mvn_command" value="clean"/>
 		</antcall>		
 	</target>
@@ -72,33 +74,41 @@
 	<target name="build_tomee" description="build tomee">
 		<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 		<antcall target="call_maven">
-			<param name="exec_dir" value="${basedir}/${runtime_path}"/>
+			<param name="exec_dir" value="${basedir}/${tomee_path}"/>
 			<param name="mvn_command" value="tomee:build -P${profile.db}"/>
+		</antcall>
+	</target>
+
+	<target name="build_tomee_docker" description="build tomee">
+		<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+		<antcall target="call_maven">
+			<param name="exec_dir" value="${basedir}/${tomee_path}"/>
+			<param name="mvn_command" value="tomee:build -P${profile.db}docker"/>
 		</antcall>
 	</target>
 	
 	<target name="clean_tomee" description="build tomee">
 		<antcall target="call_maven">
-			<param name="exec_dir" value="${basedir}/${runtime_path}"/>
+			<param name="exec_dir" value="${basedir}/${tomee_path}"/>
 			<param name="mvn_command" value="clean"/>
 		</antcall>
 	</target>
 
 	<target name="run_tomee">
-		<exec dir="${runtime_path}/target/apache-tomee/bin/" executable="bash" os="Linux">
+		<exec dir="${tomee_path}/target/apache-tomee/bin/" executable="bash" os="Linux">
 			<arg value="startup.sh" />
 		</exec>
-		<exec dir="${runtime_path}/target/apache-tomee/bin/" executable="cmd" os="Windows">
+		<exec dir="${tomee_path}/target/apache-tomee/bin/" executable="cmd" os="Windows">
 			<arg value="startup.bat" />
 		</exec>
 	</target>
 
 	<target name="stop_tomee" depends="check_tomee_exist" if="${tomee.path.exist}">
 		<echo>Try to stop a running TomEE instance...</echo>
-		<exec dir="${runtime_path}/target/apache-tomee/bin/" executable="bash" os="Linux" >
+		<exec dir="${tomee_path}/target/apache-tomee/bin/" executable="bash" os="Linux" >
 			<arg value="shutdown.sh" />
 		</exec>
-		<exec dir="${runtime_path}/target/apache-tomee/bin/" executable="cmd" os="Windows" >
+		<exec dir="${tomee_path}/target/apache-tomee/bin/" executable="cmd" os="Windows" >
 			<arg value="shutdown.bat" />
 		</exec>
 	</target>
@@ -117,7 +127,7 @@
 	</target>
 
 	<target name="check_tomee_exist">
-		<available property="tomee.path.exist" file="${runtime_path}/target/apache-tomee/bin/" type="dir" />
+		<available property="tomee.path.exist" file="${tomee_path}/target/apache-tomee/bin/" type="dir" />
 	</target>
 
 	<!-- mysql stuff -->
